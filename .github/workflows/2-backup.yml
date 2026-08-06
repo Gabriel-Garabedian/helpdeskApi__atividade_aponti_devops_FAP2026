@@ -3,6 +3,7 @@ name: Automatizar Backup
 on:
   schedule:
     - cron: '0 23 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
