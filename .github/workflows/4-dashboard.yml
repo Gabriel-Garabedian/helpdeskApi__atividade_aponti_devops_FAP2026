@@ -1,0 +1,28 @@
+name: Dashboard Manual
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gerar-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Criar pasta dashboard
+        run: mkdir -p dashboard
+
+      - name: Executar script de geração do dashboard
+        run: python scripts/gerar_dashboard.py
+
+      - name: Publicar dashboard como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashboard
+          path: dashboard/
