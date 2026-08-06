@@ -1,0 +1,27 @@
+name: Pipeline 1 - Testes
+
+on: [push, pull_request]
+
+jobs:
+  testar_codigo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout do codigo
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 3. Instalar dependencias
+        run: |
+          pip install flake8 pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: 4. Executar flake8
+        run: flake8 .
+
+      - name: 5. Executar pytest
+        run: pytest
