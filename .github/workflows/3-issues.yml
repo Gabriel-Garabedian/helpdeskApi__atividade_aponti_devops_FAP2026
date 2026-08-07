@@ -1,0 +1,26 @@
+name: Pipeline 3 - Issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  issue-triagem:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Adicionar label de triagem
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          RESPONSAVEL: ${{ github.repository_owner }}
+        run: |
+          if ! gh api "repos/$GH_REPO/labels/triagem" &>/dev/null; then
+            gh label create "triagem" --description "Issue aguardando triagem"
+          fi
+          gh issue edit "$NUMBER" --add-label "triagem" --add-assignee "$RESPONSAVEL"
+          gh issue comment "$NUMBER" --body "Muito obrigado por abrir esta issue. @$RESPONSAVEL vai analisá-la em breve."
