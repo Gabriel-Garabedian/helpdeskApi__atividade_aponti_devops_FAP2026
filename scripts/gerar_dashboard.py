@@ -1,19 +1,19 @@
 import json
 
-with open("data/chamados.json",encoding="utf-8") as f:
+with open("data/chamados.json", encoding="utf-8") as f:
 
-    chamados=json.load(f)
+    chamados = json.load(f)
 
-html=f"""
+texto = f"""
 
-<h1>Dashboard HelpDesk</h1>
+RELATÓRIO
 
-<p>Total de chamados: {len(chamados)}</p>
+Chamados cadastrados: {len(chamados)}
 
 """
 
-with open("dashboard/index.html","w",encoding="utf-8") as f:
+with open("relatorio.txt", "w", encoding="utf-8") as f:
 
-    f.write(html)
+    f.write(texto)
 
-print("Dashboard criado.")
+print("Relatório gerado.")
