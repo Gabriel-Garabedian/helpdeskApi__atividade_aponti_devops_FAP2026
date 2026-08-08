@@ -1,10 +1,10 @@
 import json
 
-with open("data/chamados.json",encoding="utf-8") as f:
+with open("data/chamados.json", encoding="utf-8") as f:
 
-    chamados=json.load(f)
+    chamados = json.load(f)
 
-html=f"""
+html = f"""
 
 <h1>Dashboard HelpDesk</h1>
 
@@ -12,7 +12,7 @@ html=f"""
 
 """
 
-with open("dashboard/index.html","w",encoding="utf-8") as f:
+with open("dashboard/index.html", "w", encoding="utf-8") as f:
 
     f.write(html)
 
