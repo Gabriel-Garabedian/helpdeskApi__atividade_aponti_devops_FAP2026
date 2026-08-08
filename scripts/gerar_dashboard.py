@@ -4,16 +4,16 @@ with open("data/chamados.json", encoding="utf-8") as f:
 
     chamados = json.load(f)
 
-texto = f"""
+html = f"""
 
-RELATÓRIO
+<h1>Dashboard HelpDesk</h1>
 
-Chamados cadastrados: {len(chamados)}
+<p>Total de chamados: {len(chamados)}</p>
 
 """
 
-with open("relatorio.txt", "w", encoding="utf-8") as f:
+with open("dashboard/index.html", "w", encoding="utf-8") as f:
 
-    f.write(texto)
+    f.write(html)
 
-print("Relatório gerado.")
+print("Dashboard criado.")
