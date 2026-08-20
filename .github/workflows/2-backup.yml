@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   backup:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Criar pasta de backups
+        run: mkdir -p backups
+
       - name: Executar backup
         run: python scripts/backup.py
 
@@ -29,6 +32,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add .
+          git add -f backups/
           git diff --staged --quiet || git commit -m "backup: backup mais recente realizado"
           git push || echo "nada para enviar"
