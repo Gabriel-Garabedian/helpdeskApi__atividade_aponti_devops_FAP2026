@@ -1,0 +1,12 @@
+[
+    {
+        "id":1,
+        "titulo":"Computador não liga",
+        "status":"Aberto"
+    },
+    {
+        "id":2,
+        "titulo":"Erro na impressora",
+        "status":"Em atendimento"
+    }
+]
